@@ -2,7 +2,11 @@ package com.lcwd.hiber.hibernate_revision;
 
 import com.lcwd.hiber.hibernate_revision.entities.Certificate;
 import com.lcwd.hiber.hibernate_revision.entities.Student;
+import com.lcwd.hiber.hibernate_revision.service.CertificateService;
+import com.lcwd.hiber.hibernate_revision.service.StudentService;
 import com.lcwd.hiber.hibernate_revision.util.HibernateUtil;
+
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,7 +27,7 @@ public class App
         
         Student student= new Student();
         
-        student.setName("ram singh");
+        student.setName("ram sri");
         student.setAbout("good student");
         student.setAge(43);
         student.setCollage("kc college");
@@ -55,35 +59,50 @@ public class App
         student.getCertificates().add(certificate1);
 //        student.getCertificates().add(certificate2);
         
+        StudentService studentService = new StudentService();
+       // studentService.saveStudent(student);
+        
+//        List<Student> students=studentService.getAllStudnetsHql();
+//        
+//       System.out.println(students);
+//        
+       
+       
+//        System.out.println(studentService.getStuntsWithPagination(2, 1));
+        
+        CertificateService certificateService= new CertificateService();
+        
+        System.out.println(certificateService.getAllCertificates());
         
         
-        SessionFactory sessionFactory= HibernateUtil.getSessionFactory();
         
-       // System.out.println(sessionFactory);
-        
-        Session sesssion= sessionFactory.openSession();
-        
-        Transaction transaction=null;
-        
-        try {
-        	transaction=sesssion.beginTransaction();
-        	
-       	sesssion.persist(student);
-        	
-        	transaction.commit();
-        	
-        	System.out.println("student saved successfully");
-        	
-        	
-        	sesssion.close();
-        	sessionFactory.close();
-        	
-        	
-        	
-        }catch(Exception e) {
-        	e.printStackTrace();
-        }
-        
+//        SessionFactory sessionFactory= HibernateUtil.getSessionFactory();
+//        
+//       // System.out.println(sessionFactory);
+//        
+//        Session sesssion= sessionFactory.openSession();
+//        
+//        Transaction transaction=null;
+//        
+//        try {
+//        	transaction=sesssion.beginTransaction();
+//        	
+//       	sesssion.persist(student);
+//        	
+//        	transaction.commit();
+//        	
+//        	System.out.println("student saved successfully");
+//        	
+//        	
+//        	sesssion.close();
+//        	sessionFactory.close();
+//        	
+//        	
+//        	
+//        }catch(Exception e) {
+//        	e.printStackTrace();
+//        }
+//        
         
         
         

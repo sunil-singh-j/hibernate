@@ -27,9 +27,9 @@ public class CertificateService {
 		
 	}
 	
-	public static List<Certificate>allCertificates(){
+	public static List<Certificate>getAllCertificates(){
 		try(Session session= sessionFactory.openSession()){
-			String getHQL="From certificate";
+			String getHQL="From Certificate";
 			
 org.hibernate.Query<Certificate> query=session.createQuery(getHQL,Certificate.class);
 			

@@ -118,7 +118,7 @@ public class StudentService {
 	
 	public List<Student> getStuntsWithPagination (int pageNO,int pageSize){
 		try(Session session=sessionFactory.openSession()){
-			String pgiQuery="From Studnet";
+			String pgiQuery="From Student";
 			
 			org.hibernate.Query<Student> query=session.createQuery(pgiQuery,Student.class);
 			query.setFirstResult((pageNO-1)*pageSize);

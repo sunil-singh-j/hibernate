@@ -55,7 +55,7 @@ public class Certificate {
 	@Override
 	public String toString() {
 		return "Certificate [certificateId=" + certificateId + ", title=" + title + ", about=" + about + ", link="
-				+ link + ", student=" + student + "]";
+				+ link + "]\n";
 	}
 
 	
