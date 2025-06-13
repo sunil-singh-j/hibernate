@@ -8,11 +8,13 @@ import org.hibernate.Transaction;
 
 import com.lcwd.hiber.hibernate_revision.entities.Certificate;
 import com.lcwd.hiber.hibernate_revision.entities.Student;
-import com.lcwd.hiber.hibernate_revision.util.HibernateUtil;
+import com.lcwd.hiber.hibernate_revision.util.Hibernate7Util;
+
+import jakarta.persistence.TypedQuery;
 
 public class CertificateService {
 	
-	private static SessionFactory sessionFactory=HibernateUtil.getSessionFactory();
+	private static SessionFactory sessionFactory=Hibernate7Util.getSessionFactory();
 	
 	public static void saveCertificate(Certificate certificate) {
 		
@@ -31,9 +33,9 @@ public class CertificateService {
 		try(Session session= sessionFactory.openSession()){
 			String getHQL="From Certificate";
 			
-org.hibernate.Query<Certificate> query=session.createQuery(getHQL,Certificate.class);
+			TypedQuery<Certificate> query=session.createQuery(getHQL,Certificate.class);
 			
-			return query.list();
+			return query.getResultList();
 		}
 	}
 

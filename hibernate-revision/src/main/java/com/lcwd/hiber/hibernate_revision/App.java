@@ -4,7 +4,7 @@ import com.lcwd.hiber.hibernate_revision.entities.Certificate;
 import com.lcwd.hiber.hibernate_revision.entities.Student;
 import com.lcwd.hiber.hibernate_revision.service.CertificateService;
 import com.lcwd.hiber.hibernate_revision.service.StudentService;
-import com.lcwd.hiber.hibernate_revision.util.HibernateUtil;
+import com.lcwd.hiber.hibernate_revision.util.Hibernate7Util;
 
 import java.util.List;
 
@@ -76,7 +76,7 @@ public class App
         
         
         
-//        SessionFactory sessionFactory= HibernateUtil.getSessionFactory();
+//        SessionFactory sessionFactory= Hibernate7Util.getSessionFactory();
 //        
 //       // System.out.println(sessionFactory);
 //        
