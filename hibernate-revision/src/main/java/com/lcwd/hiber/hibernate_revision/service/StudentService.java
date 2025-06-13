@@ -1,8 +1,15 @@
 package com.lcwd.hiber.hibernate_revision.service;
 
+import java.util.List;
+
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
 import com.lcwd.hiber.hibernate_revision.entities.Student;
 import com.lcwd.hiber.hibernate_revision.util.HibernateUtil;
@@ -82,7 +89,46 @@ public class StudentService {
 		}
 	}
 	
-	//HQL
+	//HQL  [JPA] --native query
+	
+	//database independent
+	
+	//get all students using hql
+	
+	public List< Student> getAllStudnetsHql(){
+		try(Session session =sessionFactory.openSession()){
+			String getHQL="From Student";
+			org.hibernate.Query<Student> query=session.createQuery(getHQL,Student.class);
+			
+			return query.list();
+			
+		}
+	}
+	
+	public Student getStudentByName(String name) {
+		try(Session session=sessionFactory.openSession()){
+			String getByNameHql="From Student Where name=:StudnetName";
+			
+			org.hibernate.Query<Student> query=session.createQuery(getByNameHql,Student.class);
+			
+			query.setParameter("StudentName", name);
+			return query.uniqueResult();
+		}
+	}
+	
+	public List<Student> getStuntsWithPagination (int pageNO,int pageSize){
+		try(Session session=sessionFactory.openSession()){
+			String pgiQuery="From Studnet";
+			
+			org.hibernate.Query<Student> query=session.createQuery(pgiQuery,Student.class);
+			query.setFirstResult((pageNO-1)*pageSize);
+			query.setMaxResults(pageSize);
+			return query.list();
+			
+			
+		}
+	}
+	
 	
 	
 }

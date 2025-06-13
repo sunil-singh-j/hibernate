@@ -34,6 +34,12 @@ public class Certificate {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 	public String getAbout() {
 		return about;
 	}
@@ -46,5 +52,12 @@ public class Certificate {
 	public void setLink(String link) {
 		this.link = link;
 	}
+	@Override
+	public String toString() {
+		return "Certificate [certificateId=" + certificateId + ", title=" + title + ", about=" + about + ", link="
+				+ link + ", student=" + student + "]";
+	}
 
+	
+	
 }

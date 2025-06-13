@@ -31,18 +31,14 @@ public class Student {
 	private boolean active=true;
 	@Lob
 	private String about;
-	@OneToMany(mappedBy = "student",fetch=FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "student",fetch=FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Certificate> certificates=new ArrayList<Certificate>();
 	
 	
 	public String getName() {
 		return name;
 	}
-	@Override
-	public String toString() {
-		return "Student [studentId=" + studentId + ", name=" + name + ", collage=" + collage + ", age=" + age
-				+ ", gender=" + gender + ", phone=" + phone + ", active=" + active + ", about=" + about + "]";
-	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -79,8 +75,25 @@ public class Student {
 	public String getAbout() {
 		return about;
 	}
+	public List<Certificate> getCertificates() {
+		return certificates;
+	}
+
+	public void setCertificates(List<Certificate> certificates) {
+		this.certificates = certificates;
+	}
+
 	public void setAbout(String about) {
 		this.about = about;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [studentId=" + studentId + ", name=" + name + ", collage=" + collage + ", age=" + age
+				+ ", gender=" + gender + ", phone=" + phone + ", active=" + active + ", about=" + about
+				+ ", certificates=" + certificates + "]";
+	}
+	
+	
 	
 }
